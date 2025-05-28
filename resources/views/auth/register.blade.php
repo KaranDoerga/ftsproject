@@ -2,11 +2,18 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- Name -->
+        <!-- First name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-label for="first_name" :value="__('First name')" />
+            <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
+            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+        </div>
+
+        <!-- Last name -->
+        <div>
+            <x-input-label for="last_name" :value="__('Last name')" />
+            <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -14,6 +21,27 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Adress -->
+        <div>
+            <x-input-label for="adress" :value="__('Adress')" />
+            <x-text-input id="adress" class="block mt-1 w-full" type="text" name="adress" :value="old('adress')" required autofocus autocomplete="adress" />
+            <x-input-error :messages="$errors->get('adress')" class="mt-2" />
+        </div>
+
+        <!-- Postal code -->
+        <div>
+            <x-input-label for="postal_code" :value="__('Postal code')" />
+            <x-text-input id="postal_code" class="block mt-1 w-full" type="text" name="postal_code" :value="old('postal_code')" required autofocus autocomplete="postal_code" />
+            <x-input-error :messages="$errors->get('postal_code')" class="mt-2" />
+        </div>
+
+        <!-- City -->
+        <div>
+            <x-input-label for="city" :value="__('City')" />
+            <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" required autofocus autocomplete="city" />
+            <x-input-error :messages="$errors->get('city')" class="mt-2" />
         </div>
 
         <!-- Password -->
