@@ -17,12 +17,47 @@
         @csrf
         @method('patch')
 
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        <!-- First name -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-input-label for="first_name" :value="__('First Name')" />
+            <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full"
+                          :value="old('first_name', $user->first_name)" required autofocus autocomplete="given-name" />
+            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
         </div>
 
+        <!-- Last name -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full"
+                          :value="old('last_name', $user->last_name)" required autocomplete="family-name" />
+            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+        </div>
+
+        <!-- Address -->
+        <div class="col-span-6 sm:col-span-6">
+            <x-input-label for="adress" :value="__('Address')" />
+            <x-text-input id="adress" name="adress" type="text" class="mt-1 block w-full"
+                          :value="old('adress', $user->adress)" required />
+            <x-input-error :messages="$errors->get('adress')" class="mt-2" />
+        </div>
+
+        <!-- Postal code -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-input-label for="postal_code" :value="__('Postal Code')" />
+            <x-text-input id="postal_code" name="postal_code" type="text" class="mt-1 block w-full"
+                          :value="old('postal_code', $user->postal_code)" required />
+            <x-input-error :messages="$errors->get('postal_code')" class="mt-2" />
+        </div>
+
+        <!-- City -->
+        <div class="col-span-6 sm:col-span-3">
+            <x-input-label for="city" :value="__('City')" />
+            <x-text-input id="city" name="city" type="text" class="mt-1 block w-full"
+                          :value="old('city', $user->city)" required />
+            <x-input-error :messages="$errors->get('city')" class="mt-2" />
+        </div>
+
+        <!-- Email -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
