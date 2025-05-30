@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('festival_id')->constrained()->onDelete('cascade');
             $table->foreignId('route_id')->nullable()->constrained()->onDelete('set null');
-            $table->integer('person-amount');
+            $table->integer('person_amount');
             $table->enum('status', ['booked', 'canceled'])->default('booked');
             $table->integer('points_earned')->default(0);
             $table->timestamps();

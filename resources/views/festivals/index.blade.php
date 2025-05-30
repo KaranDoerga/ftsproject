@@ -78,7 +78,7 @@
 
                     <p class="text-sm mb-3 text-gray-500">+{{ rand(100, 350) }} punten</p> {{-- voorbeeldpunten --}}
 
-                    <a href="#" class="inline-block text-center w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-900">
+                    <a href="{{ route('festivals.show', $festival->id) }}" class="inline-block text-center w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-900">
                         Bekijk Details
                     </a>
                 </div>

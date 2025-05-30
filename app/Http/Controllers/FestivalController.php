@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class FestivalController extends Controller
 {
+
+    public function show($id) {
+        $festival = Festival::findOrFail($id);
+        return view('festivals.show', compact('festival'));
+    }
+
     public function index(Request $request) {
         $query = Festival::query();
 

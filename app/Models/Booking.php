@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'festival_id',
+        'route_id',
+        'person_amount',
+        'status',
+        'points_earned',
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
