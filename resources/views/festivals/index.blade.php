@@ -48,7 +48,7 @@
         <div class="mb-4">
             <div class="inline-block align-middle">
                 Sorteren op:
-                <select name="sort" class="border rounded px-2 py-1">
+                <select id="sortSelect" class="border rounded px-2 py-1">
                     <option value="date" {{ request('sort') === 'date' ? 'selected' : '' }}>Datum</option>
                     <option value="price" {{ request('sort') === 'price' ? 'selected' : '' }}>Prijs</option>
                     <option value="name" {{ request('sort') === 'name' ? 'selected' : '' }}>Naam</option>
