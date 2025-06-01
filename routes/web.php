@@ -20,7 +20,8 @@ Route::get('/bookings/create/{festival}', [BookingController::class, 'create'])-
 Route::post('/bookings/create/{festival}', [BookingController::class, 'storeStep1'])->middleware('auth')->name('bookings.step1.store');
 Route::get('/bookings/step2', [BookingController::class, 'step2'])->middleware('auth')->name('bookings.step2');
 Route::post('/bookings/step2', [BookingController::class, 'storeStep2'])->middleware('auth')->name('bookings.step2.store');
-
+Route::get('/bookings/step3', [BookingController::class, 'step3'])->middleware('auth')->name('bookings.step3');
+Route::post('/bookings/step3', [BookingController::class, 'storeStep3'])->middleware('auth')->name('bookings.step3.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

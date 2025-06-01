@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Route extends Model
 {
+
+    protected $fillable = [
+        'festival_id',
+        'departure_location',
+        'date_departure',
+        'date_return',
+        'bus_id',
+        'available',
+    ];
+
     public function festival() {
         return $this->belongsTo(Festival::class);
     }

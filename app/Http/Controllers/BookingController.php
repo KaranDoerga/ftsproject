@@ -75,4 +75,45 @@ class BookingController extends Controller
 
         return redirect()->route('bookings.step3'); //volgende stap
     }
+
+    public function step3()
+    {
+        $step1 = session('booking.step1');
+        $step2 = session('booking.step2');
+
+        if (!$step1 || !$step2) {
+            return redirect()->route('bookings.step1', 1)->with('error', 'Geen boekingsinformatie gevonden.');
+        }
+
+        $festival = Festival::findOrFail($step1['festival_id']);
+        $route = Route::find($step1['route_id']);
+        $user = auth()->user();
+
+        $price = $festival->ticket_price * $step1['person_amount'];
+        $points = $step1['person_amount'] * 50; // hardcoded voor nu
+
+        return view('bookings.step3', compact('festival', 'route', 'step1', 'step2', 'user', 'price', 'points'));
+    }
+
+    public function storeStep3(Request $request) {
+        $step1 = session('booking.step1');
+        $step2 = session('booking.step2');
+
+        if (!$step1 || !$step2) {
+            return redirect()->route('bookings.step1', 1)->with('error', 'Informatie ontbreekt.');
+        }
+
+        Booking::create([
+            'user_id' => auth()->id(),
+            'festival_id' => $step1['festival_id'],
+            'route_id' => $step1['route_id'],
+            'person_amount' => $step1['person_amount'],
+            'status' => 'booked',
+            'points_earned' => $step1['person_amount'] * 50, // hardcoded voor nu
+        ]);
+
+        session()->forget('booking');
+
+        return redirect()->route('dashboard')->with('success', 'Je boeking is bevestigd.');
+    }
 }
