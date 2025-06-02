@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FestivalController;
 use Illuminate\Support\Facades\Route;
@@ -9,9 +10,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/festivals', [FestivalController::class, 'index'])->name('festivals.index');
 Route::get('festivals/{id}', [FestivalController::class, 'show'])->name('festivals.show');

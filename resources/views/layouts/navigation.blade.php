@@ -19,16 +19,7 @@
                         <x-nav-link :href="route('festivals.index')" :active="request()->routeIs('festivals.index')">
                             {{ __('Festivals') }}
                         </x-nav-link>
-                        <x-nav-link href="#">
-                            {{ __('Mijn Boekingen') }}
-                        </x-nav-link>
-                        <x-nav-link href="#">
-                            {{ __('Mijn Punten') }}
-                        </x-nav-link>
                     @else
-                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                            {{ __('Home') }}
-                        </x-nav-link>
                         <x-nav-link :href="route('festivals.index')" :active="request()->routeIs('festivals.index')">
                             {{ __('Festivals') }}
                         </x-nav-link>
@@ -109,16 +100,7 @@
                 <x-responsive-nav-link :href="route('festivals.index')" :active="request()->routeIs('festivals.index')">
                     {{ __('Festivals') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link href="#">
-                    {{ __('Mijn Boekingen') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link href="#">
-                    {{ __('Mijn Punten') }}
-                </x-responsive-nav-link>
             @else
-                <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                    {{ __('Home') }}
-                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('festivals.index')" :active="request()->routeIs('festivals.index')">
                     {{ __('Festivals') }}
                 </x-responsive-nav-link>
