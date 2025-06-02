@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FestivalManagementController;
+use App\Http\Controllers\PlannerDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FestivalController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+});
+Route::middleware(['auth', 'role:planner,admin'])->prefix('planner')->name('planner.')->group(function () {
+    Route::get('/dashboard', [PlannerDashboardController::class, 'index'])->name('dashboard');
+    Route::resource('festivals', FestivalManagementController::class);
 });
 
 require __DIR__.'/auth.php';
