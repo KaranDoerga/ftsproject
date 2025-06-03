@@ -11,6 +11,8 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     Welkom op het Planner Dashboard!
                     <p><a href="{{ route('planner.festivals.index') }}" class="text-indigo-600 hover:text-indigo-900">Festivalbeheer</a></p>
+                    <p><a href="{{ route('planner.routes.index') }}" class="text-indigo-600 hover:text-indigo-900">Routebeheer</a></p>
+                    <p><a href="{{ route('planner.buses.index') }}" class="text-indigo-600 hover:text-indigo-900">Busbeheer</a></p>
                 </div>
             </div>
         </div>

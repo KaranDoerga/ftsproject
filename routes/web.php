@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BusManagementController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FestivalManagementController;
 use App\Http\Controllers\PlannerDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FestivalController;
+use App\Http\Controllers\RouteManagementController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,6 +39,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 Route::middleware(['auth', 'role:planner,admin'])->prefix('planner')->name('planner.')->group(function () {
     Route::get('/dashboard', [PlannerDashboardController::class, 'index'])->name('dashboard');
     Route::resource('festivals', FestivalManagementController::class);
+    Route::resource('routes', RouteManagementController::class);
+    Route::resource('buses', BusManagementController::class);
 });
 
 require __DIR__.'/auth.php';
