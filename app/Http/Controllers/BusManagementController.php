@@ -33,8 +33,8 @@ class BusManagementController extends Controller
         $validatedData = $request->validate([
             'type' => 'required|string|max:255',
             'capacity' => 'required|integer|min:1',
-            'license_plate' => 'nullable|string|max:20|unique:buses,license_plate', // Kenteken moet uniek zijn als ingevuld
-            'driver' => 'nullable|string|max:255',
+            'license_plate' => 'required|string|max:20|unique:buses,license_plate', // Kenteken moet uniek zijn als ingevuld
+            'driver' => 'required|string|max:255',
             'available' => 'required|boolean',
         ]);
 
@@ -71,10 +71,10 @@ class BusManagementController extends Controller
         $validatedData = $request->validate([
             'type' => 'required|string|max:255',
             'capacity' => 'required|integer|min:1',
-            'license_plate' => ['nullable', 'string', 'max:20',
+            'license_plate' => ['required', 'string', 'max:20',
                 Rule::unique('buses', 'license_plate')->ignore($bus->id),
             ],
-            'driver' => 'nullable|string|max:255',
+            'driver' => 'required|string|max:255',
             'available' => 'required|boolean',
         ]);
 
