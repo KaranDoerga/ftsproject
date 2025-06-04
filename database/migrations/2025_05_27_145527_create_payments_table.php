@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('booking_id')->constrained()->onDelete('cascade');
-            $table->decimal('amount', 8, 2);
-            $table->enum('payment_method', ['iDEAL', 'PayPal', 'creditcard']);
-            $table->enum('status', ['open', 'paid', 'canceled'])->default('open');
-            $table->timestamp('paid_on')->nullable();
+            $table->foreignId('booking_id')->constrained()->onDelete('cascade'); // Gekoppeld aan een boeking
+            $table->decimal('amount', 8, 2); // Het betaalde bedrag
+            $table->decimal('original_amount', 8, 2)->nullable(); // Het originele bedrag vóór korting
+            $table->decimal('discount_amount', 8, 2)->default(0); // Bedrag van de korting (bijv. door punten)
+            $table->integer('points_redeemed')->default(0); // Hoeveel punten zijn ingewisseld
+            $table->string('payment_method')->nullable(); // bijv. 'iDEAL', 'PayPal', 'Punten', 'Gratis'
+            $table->enum('status', ['pending', 'paid', 'failed', 'refunded'])->default('pending');
+            $table->timestamp('paid_at')->nullable(); // Wanneer de betaling is voltooid
+            $table->string('transaction_id')->nullable()->unique(); // Optionele ID van de betaalprovider
             $table->timestamps();
         });
     }

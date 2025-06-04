@@ -26,6 +26,8 @@ Route::get('/bookings/step2', [BookingController::class, 'step2'])->middleware('
 Route::post('/bookings/step2', [BookingController::class, 'storeStep2'])->middleware('auth')->name('bookings.step2.store');
 Route::get('/bookings/step3', [BookingController::class, 'step3'])->middleware('auth')->name('bookings.step3');
 Route::post('/bookings/step3', [BookingController::class, 'storeStep3'])->middleware('auth')->name('bookings.step3.store');
+Route::get('/bookings/step4', [BookingController::class, 'step4'])->middleware('auth')->name('bookings.step4');
+Route::post('/bookings/step4', [BookingController::class, 'storeBookingFinal'])->middleware('auth')->name('bookings.finalize'); // Dit wordt de definitieve opslag actie
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
