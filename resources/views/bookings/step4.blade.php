@@ -47,7 +47,7 @@
                     <p class="text-sm text-gray-600 mb-4">Controleer alle gegevens zorgvuldig. Door op "Boeking Definitief Plaatsen" te klikken, ga je akkoord met de algemene voorwaarden.</p>
                     <div class="flex justify-between">
                         <a href="{{ route('bookings.step3') }}" class="text-gray-600 underline">← Terug naar Betaling</a>
-                        <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded text-lg hover:bg-green-700">
+                        <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">
                             Boeking Definitief Plaatsen
                         </button>
                     </div>
