@@ -36,7 +36,7 @@
 
             <div>
                 <label class="block mb-1 font-medium">Telefoonnummer</label>
-                <input type="text" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}" class="w-full border rounded px-3 py-2" required>
+                <input type="text" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}" class="w-full border rounded px-3 py-2">
             </div>
 
             <div>

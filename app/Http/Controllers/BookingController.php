@@ -67,7 +67,7 @@ class BookingController extends Controller
 
     public function storeStep2(Request $request) {
         $validated = $request->validate([
-            'phone_number' => 'required|string',
+            'phone_number' => 'nullable|string',
             'adress' => 'required|string',
             'postal_code' => 'required|string',
             'city' => 'required|string',

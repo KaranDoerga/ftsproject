@@ -31,14 +31,14 @@
                     @if ($currentPointsBalance > 0)
                         <div class="mt-2">
                             <label for="points_to_redeem" class="block text-sm font-medium text-gray-700">
-                                Punten inwisselen (10 punten = €1 korting, max {{ $currentPointsBalance }} punten):
+                                Punten inwisselen (10 punten = €1 korting):
                             </label>
                             <input type="number" name="points_to_redeem" id="points_to_redeem"
                                    value="{{ old('points_to_redeem', 0) }}"
                                    min="0" max="{{ $currentPointsBalance }}" step="10"
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                             @error('points_to_redeem') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                            <small class="text-xs text-gray-500">Je kunt maximaal {{ $originalPrice * 10 }} punten inwisselen voor deze boeking, of je volledige saldo als dat lager is.</small>
+                            <small class="text-xs text-gray-500">Je kunt maximaal {{ $originalPrice * 10 }} punten inwisselen voor deze boeking.</small>
                         </div>
                     @else
                         <p class="text-sm text-gray-500">Je hebt geen punten om in te wisselen.</p>
