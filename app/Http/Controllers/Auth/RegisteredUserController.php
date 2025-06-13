@@ -37,6 +37,7 @@ class RegisteredUserController extends Controller
             'city' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone_number' => ['nullable', 'string', 'max:20'],
         ]);
 
         $user = User::create([
@@ -47,6 +48,7 @@ class RegisteredUserController extends Controller
             'city' => $request->city,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone_number' => $request->phone_number,
             'role' => 'customer', // default role
         ]);
 

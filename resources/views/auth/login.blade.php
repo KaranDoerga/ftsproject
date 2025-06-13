@@ -43,5 +43,12 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+
+        {{-- Registreren --}}
+        <div class="text-center mt-4">
+            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" href="{{ route('register') }}">
+                Nog geen account? Registreren
+            </a>
+        </div>
     </form>
 </x-guest-layout>
