@@ -2,7 +2,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
+        <h1 class="font-semibold text-3xl text-gray-800 dark:text-gray-200 leading-tight mb-6">Dashboard</h1>
 
             {{-- Welkomstboodschap --}}
             <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg mb-6">

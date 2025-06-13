@@ -38,7 +38,7 @@
                 </div>
 
                 {{-- Prijs en Boek-knop --}}
-                <div class="bg-gray-800 p-6 rounded-lg shadow-inner">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-inner">
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="text-sm text-gray-400">Prijs per persoon</p>

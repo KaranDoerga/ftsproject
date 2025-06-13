@@ -1,13 +1,13 @@
 <x-app-layout>
     <div class="container mx-auto px-4 py-8">
 
-        <h1 class="text-3xl font-bold mb-6">Festivals</h1>
+        <h1 class="font-semibold text-3xl text-gray-800 dark:text-gray-200 leading-tight mb-6">Festivals</h1>
 
         <form method="GET" action="{{ route('festivals.index') }}">
             {{-- 🔍 Zoek + Sorteer + Filter Toggle --}}
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                 <div class="flex flex-1 gap-2">
-                    <input type="text" name="search" value="{{request('search')}}" placeholder="Zoek festivals..." class="border rounded px-3 py-2 w-full">
+                    <x-text-input type="text" name="search" value="{{request('search')}}" placeholder="Zoek festivals..." class="border rounded px-3 py-2 w-full"/>
                 </div>
 
                 {{-- Toggle filters --}}
