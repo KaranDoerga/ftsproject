@@ -29,14 +29,20 @@
                         <x-nav-link :href="route('festivals.index')" :active="request()->routeIs('festivals.index')">
                             {{ __('Festivals') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                            {{ __('Over Ons') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
+                            {{ __('Contact') }}
+                        </x-nav-link>
                     @else
                         <x-nav-link :href="route('festivals.index')" :active="request()->routeIs('festivals.index')">
                             {{ __('Festivals') }}
                         </x-nav-link>
-                        <x-nav-link href="#">
+                        <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
                             {{ __('Over Ons') }}
                         </x-nav-link>
-                        <x-nav-link href="#">
+                        <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
                             {{ __('Contact') }}
                         </x-nav-link>
                         <x-nav-link :href="route('login')" :active="request()->routeIs('login')">

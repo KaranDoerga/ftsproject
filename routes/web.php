@@ -11,6 +11,7 @@ use App\Http\Controllers\PlannerDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\RouteManagementController;
+use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\UserManagementController;
 use App\Models\Festival;
 use Illuminate\Support\Facades\Route;
@@ -53,5 +54,9 @@ Route::middleware(['auth', 'role:planner,admin'])->prefix('planner')->name('plan
     Route::get('bus-planning', [BusPlanningController::class, 'index'])->name('bus-planning.index');
     Route::post('bus-planning/{festival}/approve', [App\Http\Controllers\BusPlanningController::class, 'approve'])->name('bus-planning.approve');
 });
+
+Route::get('/over-ons', [StaticPageController::class, 'about'])->name('about');
+Route::get('/contact', [StaticPageController::class, 'contact'])->name('contact');
+Route::post('/contact', [StaticPageController::class, 'sendContact'])->name('contact.send');
 
 require __DIR__.'/auth.php';
