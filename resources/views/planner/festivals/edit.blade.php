@@ -9,7 +9,7 @@
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('planner.festivals.update', $festival->id) }}">
+                    <form method="POST" action="{{ route('planner.festivals.update', $festival->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT') {{-- Of PATCH --}}
 
@@ -78,9 +78,9 @@
                         </div>
 
                         <div class="mt-4">
-                            <label for="image" class="block font-medium text-sm text-gray-700 dark:text-gray-300">Afbeelding (bestandsnaam, bijv. festivalnaam.jpg)</label>
-                            <input id="image" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600" type="text" name="image" value="{{ old('image', $festival->image) }}" required />
-                            <small class="text-xs text-gray-500 dark:text-gray-400">Plaats de afbeelding later in `public/images/festivals/`.</small>
+                            <label for="image" class="block font-medium text-sm text-gray-700 dark:text-gray-300">Festivalafbeelding</label>
+                            <input id="image" class="block mt-1 w-full text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 focus:outline-none" type="file" name="image" required />
+                            <small class="text-xs text-gray-500 dark:text-gray-400">Toegestane formaten: jpg, png, jpeg, gif, svg. Max grootte: 2MB.</small>
                             @error('image') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 

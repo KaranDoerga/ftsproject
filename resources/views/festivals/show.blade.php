@@ -12,7 +12,7 @@
         <div class="flex flex-col space-y-8">
             {{-- Afbeelding --}}
             <div class="mb-2">
-                <img src="{{ asset('images/festivals/' . $festival->image) }}" alt="{{ $festival->name }}"
+                <img src="{{ asset('storage/' . $festival->image) }}" alt="{{ $festival->name }}"
                      class="w-full h-auto max-w-lg max-h-80 object-cover rounded shadow mx-auto lg:mx-0">
             </div>
 

@@ -13,7 +13,6 @@ use App\Models\Festival;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    // Haal de 3 nieuwste gepubliceerde festivals op om op de homepage te tonen
     $popularFestivals = Festival::where('status', 'published')->latest('start_date')->take(3)->get();
     return view('home', compact('popularFestivals'));
 })->name('home');

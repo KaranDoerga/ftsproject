@@ -59,7 +59,7 @@ class FestivalController extends Controller
             }
         }
 
-        $festivals = $query->get();
+        $festivals = $query->paginate(8);
 
         return view('festivals.index', compact('festivals'));
     }

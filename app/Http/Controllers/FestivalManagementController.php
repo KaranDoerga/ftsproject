@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Festival;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class FestivalManagementController extends Controller
@@ -41,10 +42,15 @@ class FestivalManagementController extends Controller
             'country' => 'required|string|max:100',
             'line_up' => 'nullable|string',
             'music_genre' => 'required|string|max:100',
-            'image' => 'required|string|max:255', // Voor nu alleen bestandsnaam
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'ticket_price' => 'required|numeric|min:0',
             'status' => ['required', Rule::in(['concept', 'published', 'sold_out'])],
         ]);
+
+        if (request()->hasFile('image')) {
+            $path = request()->file('image')->store('public/festivals');
+            $validatedData['image'] = $path;
+        }
 
         Festival::create($validatedData);
 
@@ -83,10 +89,16 @@ class FestivalManagementController extends Controller
             'country' => 'required|string|max:100',
             'line_up' => 'nullable|string',
             'music_genre' => 'required|string|max:100',
-            'image' => 'required|string|max:255', // Voor nu alleen bestandsnaam
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'ticket_price' => 'required|numeric|min:0',
             'status' => ['required', Rule::in(['concept', 'published', 'sold_out'])],
         ]);
+
+        if ($request->hasFile('image')) {
+            if ($festival->image) {
+                Storage::disk('public')->delete($festival->image);
+            }
+        }
 
         $festival->update($validatedData);
 

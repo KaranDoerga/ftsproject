@@ -45,23 +45,23 @@
         </form>
 
         {{-- 🔄 Sorteer dropdown + aantal --}}
-        <div class="mb-4">
-            <div class="inline-block align-middle">
-                Sorteren op:
-                <select id="sortSelect" class="border rounded px-2 py-1">
+        <div class="flex justify-between items-center mb-4">
+            <div>
+                <label for="sortSelect" class="text-gray-700 dark:text-gray-300 mr-2">Sorteren op:</label>
+                <select id="sortSelect" class="border rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-600 appearance-none pr-8">
                     <option value="date" {{ request('sort') === 'date' ? 'selected' : '' }}>Datum</option>
                     <option value="price" {{ request('sort') === 'price' ? 'selected' : '' }}>Prijs</option>
                     <option value="name" {{ request('sort') === 'name' ? 'selected' : '' }}>Naam</option>
                 </select>
             </div>
-            <div class="inline-block align-middle">{{ $festivals->count() }} festivals gevonden</div>
+            <div class="text-gray-600 dark:text-gray-300">{{ $festivals->count() }} festivals gevonden</div>
         </div>
 
         {{-- 🎟 Festival cards --}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($festivals as $festival)
                 <div class="border rounded shadow p-4 bg-white">
-                    <img src="{{ asset('images/festivals/' . $festival->image) }}" alt="{{ $festival->name }}" class="w-full h-40 object-cover mb-3">
+                    <img src="{{ asset('storage/' . $festival->image) }}" alt="{{ $festival->name }}" class="w-full h-40 object-cover mb-3">
 
                     <h2 class="font-bold text-2xl mb-1">{{ $festival->name }} {{ \Carbon\Carbon::parse($festival->start_date)->format('Y') }}</h2>
 
@@ -85,11 +85,9 @@
             @endforeach
         </div>
 
-        {{-- 🔻 Meer Laden --}}
-        <div class="text-center mt-6">
-            <button class="px-6 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
-                Meer Laden
-            </button>
+        {{-- Paginatie Links --}}
+        <div class="mt-8">
+            {{ $festivals->links() }}
         </div>
 
     </div>
