@@ -24,21 +24,27 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'first_name' => fake()->firstName(), // Gebruik firstName()
+            'last_name' => fake()->lastName(),   // Gebruik lastName()
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'phone_number' => fake()->phoneNumber(),
+            'adress' => fake()->streetAddress(),
+            'postal_code' => fake()->postcode(),
+            'city' => fake()->city(),
+            'role' => 'customer', // Standaardrol voor testgebruikers
         ];
     }
 
     /**
      * Indicate that the model's email address should be unverified.
      */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
+//    public function unverified(): static
+//    {
+//        return $this->state(fn (array $attributes) => [
+//            'email_verified_at' => null,
+//        ]);
+//    }
 }
