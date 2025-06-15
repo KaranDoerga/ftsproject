@@ -11,6 +11,7 @@ use App\Http\Controllers\PlannerDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\RouteManagementController;
+use App\Http\Controllers\UserManagementController;
 use App\Models\Festival;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::resource('users', UserManagementController::class);
 });
 Route::middleware(['auth', 'role:planner,admin'])->prefix('planner')->name('planner.')->group(function () {
     Route::get('/dashboard', [PlannerDashboardController::class, 'index'])->name('dashboard');
