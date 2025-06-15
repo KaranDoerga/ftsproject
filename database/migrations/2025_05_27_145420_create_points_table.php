@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('booking_id')->nullable()->constrained()->onDelete('set null');
             $table->integer('amount');
-            $table->enum('type', ['earned', 'redeemed']);
+            $table->enum('type', ['earned', 'redeemed', 'cancellation', 'refunded']);
             $table->string('reason')->nullable();
             $table->timestamps();
         });

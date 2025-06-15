@@ -49,6 +49,19 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                                             {{ $booking->festival->city ?? 'N/A' }}, {{ $booking->festival->country ?? '' }}
                                         </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            {{-- We tonen de knop alleen als de boeking nog niet geannuleerd is --}}
+                                            @if ($booking->status == 'booked')
+                                                <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je deze boeking wilt annuleren?');">
+                                                    @csrf
+                                                    <button type="submit" class="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 underline text-xs">
+                                                        Annuleren
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <span class="text-xs text-gray-400">Geannuleerd</span>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
