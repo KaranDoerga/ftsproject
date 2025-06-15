@@ -26,5 +26,25 @@
                 {{ $slot }}
             </div>
         </div>
+        <footer class="bg-gray-800 dark:bg-gray-900 border-t border-gray-700">
+            <div class="container mx-auto px-6 py-8">
+                <div class="flex flex-col items-center text-center">
+                    {{-- Navigatie Links --}}
+                    <div class="flex flex-wrap justify-center mt-6 -mx-4">
+                        <a href="{{ route('home') }}" class="mx-4 text-sm text-gray-400 hover:text-white">Home</a>
+                        <a href="{{ route('festivals.index') }}" class="mx-4 text-sm text-gray-400 hover:text-white">Festivals</a>
+                        <a href="#" class="mx-4 text-sm text-gray-400 hover:text-white">Over Ons</a>
+                        <a href="#" class="mx-4 text-sm text-gray-400 hover:text-white">Contact</a>
+                        <a href="#" class="mx-4 text-sm text-gray-400 hover:text-white">Privacybeleid</a>
+                    </div>
+                </div>
+
+                <hr class="my-6 border-gray-700" />
+
+                <div class="text-center">
+                    <p class="text-sm text-gray-400">© {{ date('Y') }} Festival Travel System. Alle rechten voorbehouden.</p>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

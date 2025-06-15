@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <label for="location_adress" class="block font-medium text-sm text-gray-700 dark:text-gray-300">Locatie Adres</label>
+                            <label for="location_adress" class="block font-medium text-sm text-gray-700 dark:text-gray-300">Straatnaam</label>
                             <input id="location_adress" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600" type="text" name="location_adress" value="{{ old('location_adress') }}" required />
                             @error('location_adress') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
