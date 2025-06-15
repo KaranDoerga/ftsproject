@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BusManagementController;
+use App\Http\Controllers\BusPlanningController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FestivalManagementController;
 use App\Http\Controllers\PlannerDashboardController;
@@ -45,6 +46,8 @@ Route::middleware(['auth', 'role:planner,admin'])->prefix('planner')->name('plan
     Route::resource('festivals', FestivalManagementController::class);
     Route::resource('routes', RouteManagementController::class);
     Route::resource('buses', BusManagementController::class);
+    Route::get('bus-planning', [BusPlanningController::class, 'index'])->name('bus-planning.index');
+    Route::post('bus-planning/{festival}/approve', [App\Http\Controllers\BusPlanningController::class, 'approve'])->name('bus-planning.approve');
 });
 
 require __DIR__.'/auth.php';

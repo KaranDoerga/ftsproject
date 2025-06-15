@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             FestivalSeeder::class,
             RouteSeeder::class,
+            BookingSeeder::class,
         ]);
     }
 }

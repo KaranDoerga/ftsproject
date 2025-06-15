@@ -22,7 +22,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach ($popularFestivals as $festival)
                         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                            <img src="{{ asset('images/festivals/' . $festival->image) }}" alt="{{ $festival->name }}" class="w-full h-48 object-cover">
+                            <img src="{{ asset('storage/' . $festival->image) }}" alt="{{ $festival->name }}" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">{{ $festival->name }}</h3>
                                 <p class="text-gray-600 dark:text-gray-400 mb-4">{{ $festival->city }}, {{ $festival->country }} | {{ \Carbon\Carbon::parse($festival->start_date)->format('d M Y') }}</p>

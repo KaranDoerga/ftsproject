@@ -60,7 +60,7 @@
         {{-- 🎟 Festival cards --}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($festivals as $festival)
-                <div class="border rounded shadow p-4 bg-white">
+                <div class="border rounded shadow p-4 bg-blue-200">
                     <img src="{{ asset('storage/' . $festival->image) }}" alt="{{ $festival->name }}" class="w-full h-40 object-cover mb-3">
 
                     <h2 class="font-bold text-2xl mb-1">{{ $festival->name }} {{ \Carbon\Carbon::parse($festival->start_date)->format('Y') }}</h2>

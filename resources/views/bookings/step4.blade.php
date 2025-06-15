@@ -19,7 +19,7 @@
             <div>
                 <h3 class="font-medium">Festival & Reis:</h3>
                 <p>{{ $festival->name }} van {{ \Carbon\Carbon::parse($festival->start_date)->format('d M') }} tot {{ \Carbon\Carbon::parse($festival->end_date)->format('d M Y') }}</p>
-                <p>Route: {{ $route?->departure_location ?? 'N.v.t.' }} om {{ $step1['departure_time'] }}</p>
+                <p>Route: {{ $route?->departure_location ?? 'N.v.t.' }} op {{ \Carbon\Carbon::parse($step1['date_departure'])->format('d-m-Y \o\m H:i') }}</p>
                 <p>Aantal personen: {{ $step1['person_amount'] }}</p>
             </div>
 

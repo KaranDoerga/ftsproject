@@ -79,8 +79,18 @@
 
                         <div class="mt-4">
                             <label for="image" class="block font-medium text-sm text-gray-700 dark:text-gray-300">Festivalafbeelding</label>
-                            <input id="image" class="block mt-1 w-full text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 focus:outline-none" type="file" name="image" required />
-                            <small class="text-xs text-gray-500 dark:text-gray-400">Toegestane formaten: jpg, png, jpeg, gif, svg. Max grootte: 2MB.</small>
+
+                            {{-- Toon de huidige afbeelding als die bestaat --}}
+                            @if ($festival->image)
+                                <div class="mt-2 mb-4">
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Huidige afbeelding:</p>
+                                    <img src="{{ asset('storage/' . $festival->image) }}" alt="Huidige afbeelding van {{ $festival->name }}" class="rounded-md max-h-48">
+                                </div>
+                                <label for="image" class="block font-medium text-sm text-gray-700 dark:text-gray-300 mt-4">Vervang afbeelding (optioneel):</label>
+                            @endif
+
+                            <input id="image" class="block mt-1 w-full text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 focus:outline-none" type="file" name="image" />
+                            <small class="text-xs text-gray-500 dark:text-gray-400">Laat leeg om de huidige afbeelding te behouden. Max grootte: 2MB.</small>
                             @error('image') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 

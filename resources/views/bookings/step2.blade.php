@@ -17,7 +17,7 @@
             <p><strong>Festival:</strong> {{ $festival->name }}</p>
             <p><strong>Route:</strong> {{ $route->departure_location }}</p>
             <p><strong>Personen:</strong> {{ $step1['person_amount'] }}</p>
-            <p><strong>Vertrektijd:</strong> {{ $step1['departure_time'] }}</p>
+            <p><strong>Vertrek:</strong> {{ \Carbon\Carbon::parse($step1['date_departure'])->format('d-m-Y H:i') }}</p>
         </div>
 
         {{-- Persoonsgegevensformulier --}}

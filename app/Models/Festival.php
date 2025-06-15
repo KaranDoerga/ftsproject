@@ -23,6 +23,7 @@ class Festival extends Model
         'image',
         'ticket_price',
         'status',
+        'planning_status',
     ];
     public function bookings() {
         return $this->hasMany(Booking::class);

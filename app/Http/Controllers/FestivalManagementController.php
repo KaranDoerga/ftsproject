@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Festival;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
@@ -14,7 +15,10 @@ class FestivalManagementController extends Controller
      */
     public function index()
     {
-        $festivals = Festival::latest()->get();
+        $festivals = Festival::withCount(['bookings as total_persons' => function ($query) {
+            $query->select(DB::raw('sum(person_amount) as totalpersons'));
+        }])->latest()->get();
+
         return view('planner.festivals.index', compact('festivals'));
     }
 
@@ -48,7 +52,7 @@ class FestivalManagementController extends Controller
         ]);
 
         if (request()->hasFile('image')) {
-            $path = request()->file('image')->store('public/festivals');
+            $path = request()->file('image')->store('festivals', 'public');
             $validatedData['image'] = $path;
         }
 
@@ -98,6 +102,9 @@ class FestivalManagementController extends Controller
             if ($festival->image) {
                 Storage::disk('public')->delete($festival->image);
             }
+
+            $path = $request->file('image')->store('festivals', 'public');
+            $validatedData['image'] = $path;
         }
 
         $festival->update($validatedData);

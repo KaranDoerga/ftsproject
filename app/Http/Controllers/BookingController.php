@@ -26,8 +26,9 @@ class BookingController extends Controller
         $validated = $request->validate([
             'route_id' => 'required|exists:routes,id',
             'person_amount' => 'required|integer|min:1|max:10',
-            'departure_time' => 'required',
         ]);
+
+        $selectedRoute = Route::find($validated['route_id']);
 
         // Prijs en punten ophalen
         $pricePerPerson = $festival->ticket_price;
@@ -39,7 +40,7 @@ class BookingController extends Controller
                 'festival_id' => $festival->id,
                 'route_id' => $validated['route_id'],
                 'person_amount' => $validated['person_amount'],
-                'departure_time' => $validated['departure_time'],
+                'date_departure' => $selectedRoute->date_departure,
                 'price' => $pricePerPerson,
                 'points' => $pointsPerPerson,
                 'subtotal' => $validated['person_amount'] * $pricePerPerson,

@@ -27,13 +27,16 @@
             @csrf
 
             <div>
-                <label class="block mb-1 font-medium">Vertreklocatie</label>
+                <label class="block mb-1 font-medium">Kies je vertrekroute en -tijd</label>
                 <select name="route_id" required class="w-full border rounded px-3 py-2">
-                    <option value="">-- Selecteer route --</option>
+                    <option value="">-- Selecteer een route --</option>
                     @foreach($routes as $route)
-                        <option value="{{ $route->id }}">{{ $route->departure_location }}</option>
+                        <option value="{{ $route->id }}" {{ old('route_id') == $route->id ? 'selected' : '' }}>
+                            {{ $route->departure_location }} (Vertrek: {{ \Carbon\Carbon::parse($route->date_departure)->format('d-m-Y H:i') }})
+                        </option>
                     @endforeach
                 </select>
+                @error('route_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div>
@@ -42,15 +45,6 @@
                     @for($i = 1; $i <= 10; $i++)
                         <option value="{{ $i }}">{{ $i }} personen</option>
                     @endfor
-                </select>
-            </div>
-
-            <div>
-                <label class="block mb-1 font-medium">Vertrektijd</label>
-                <select name="departure_time" required class="w-full border rounded px-3 py-2">
-                    <option value="06:00">06:00</option>
-                    <option value="08:00">08:00</option>
-                    <option value="10:00">10:00</option>
                 </select>
             </div>
 

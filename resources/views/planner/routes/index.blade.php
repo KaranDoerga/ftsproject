@@ -30,6 +30,7 @@
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Vertreklocatie</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Vertrekdatum</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Beschikbaar</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Toegewezen Bus</th>
                                     <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Acties</th>
                                 </tr>
                                 </thead>
@@ -44,6 +45,10 @@
                                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $route->available ? 'bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-100' : 'bg-red-100 text-red-800 dark:bg-red-700 dark:text-red-100' }}">
                                                     {{ $route->available ? 'Ja' : 'Nee' }}
                                                 </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                            {{-- Toon bus type, of een streepje als er geen bus is toegewezen --}}
+                                            {{ $route->bus?->type ?? '-' }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a href="{{ route('planner.routes.edit', $route->id) }}" class="text-indigo-600 hover:text-indigo-900 dark:hover:text-indigo-400">Bewerken</a>

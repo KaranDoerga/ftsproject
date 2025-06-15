@@ -14,7 +14,7 @@ class RouteManagementController extends Controller
      */
     public function index()
     {
-        $routes = Route::with('festival')->latest()->get();
+        $routes = Route::with(['festival', 'bus'])->latest()->get();
         return view('planner.routes.index', compact('routes'));
     }
 

@@ -15,7 +15,8 @@
         {{-- Overzicht van eerder gekozen opties --}}
         <div class="bg-gray-100 p-4 rounded mb-6 space-y-2">
             <p><strong>Festival:</strong> {{ $festival->name }} ({{ $step1['person_amount'] }}x)</p>
-            <p><strong>Route:</strong> {{ $route?->departure_location ?? 'N.v.t.' }} om {{ $step1['departure_time'] }}</p>
+            <p><strong>Route:</strong> {{ $route?->departure_location ?? 'N.v.t.' }}</p>
+            <p><strong>Vertrek:</strong> {{ \Carbon\Carbon::parse($step1['date_departure'])->format('d-m-Y H:i') }}</p>
             <p><strong>Contact:</strong> {{ $user->first_name }} {{ $user->last_name }}, {{ $step2['phone_number'] }}</p>
         </div>
 
