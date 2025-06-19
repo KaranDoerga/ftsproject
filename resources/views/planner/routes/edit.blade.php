@@ -59,15 +59,6 @@
                             @error('bus_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="mt-4">
-                            <label for="available" class="block font-medium text-sm text-gray-700 dark:text-gray-300">Beschikbaar</label>
-                            <select id="available" name="available" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600" required>
-                                <option value="1" {{ old('available', $route->available) == 1 ? 'selected' : '' }}>Ja</option>
-                                <option value="0" {{ old('available', $route->available) == 0 ? 'selected' : '' }}>Nee</option>
-                            </select>
-                            @error('available') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                        </div>
-
                         <div class="flex items-center justify-end mt-6">
                             <a href="{{ route('planner.routes.index') }}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mr-4">
                                 Annuleren
