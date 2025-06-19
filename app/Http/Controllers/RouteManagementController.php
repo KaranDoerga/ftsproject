@@ -39,7 +39,6 @@ class RouteManagementController extends Controller
             'date_departure' => 'required|date',
             'date_return' => 'required|date|after_or_equal:date_departure',
             'bus_id' => 'nullable|integer|exists:buses,id',
-            'available' => 'required|boolean',
         ]);
 
         Route::create($validatedData);
@@ -76,7 +75,6 @@ class RouteManagementController extends Controller
             'date_departure' => 'required|date',
             'date_return' => 'required|date|after_or_equal:date_departure',
             'bus_id' => 'nullable|integer|exists:buses,id',
-            'available' => 'required|boolean',
         ]);
 
         $route->update($validatedData);
