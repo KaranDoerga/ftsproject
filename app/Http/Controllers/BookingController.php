@@ -48,7 +48,7 @@ class BookingController extends Controller
             ],
         ]);
 
-        return redirect()->route('bookings.step2'); // nog te maken
+        return redirect()->route('bookings.step2');
     }
 
     public function step2() {
@@ -102,8 +102,6 @@ class BookingController extends Controller
 
     public function storeStep3(Request $request) {
 
-        //dd(session('booking'), $request->all());
-
         $step1 = session('booking.step1');
         $step2 = session('booking.step2');
 
@@ -117,7 +115,7 @@ class BookingController extends Controller
         $originalPrice = ($step1['price'] ?? 0) * ($step1['person_amount'] ?? 1);
 
         $request->validate([
-            'payment_method' => 'required|string', // Voorbeeld: 'ideal', 'creditcard', 'points_only'
+            'payment_method' => 'required|string',
             'points_to_redeem' => 'nullable|integer|min:0|max:' . $currentPointsBalance,
         ]);
 
@@ -179,7 +177,7 @@ class BookingController extends Controller
             'festival_id' => $step1['festival_id'],
             'route_id' => $step1['route_id'],
             'person_amount' => $step1['person_amount'],
-            'status' => 'booked', // Of 'pending_payment' afhankelijk van echte betaalflow
+            'status' => 'booked',
             'points_earned' => $step3['points_to_earn_for_booking'],
         ]);
 
@@ -191,7 +189,7 @@ class BookingController extends Controller
                 'discount_amount' => $step3['discount_from_points'],
                 'points_redeemed' => $step3['points_to_redeem'],
                 'payment_method' => $step3['payment_method'],
-                'status' => ($step3['final_price'] == 0 && $step3['points_to_redeem'] > 0) ? 'paid' : 'pending', // Simpel voorbeeld
+                'status' => ($step3['final_price'] == 0 && $step3['points_to_redeem'] > 0) ? 'paid' : 'pending',
                 'paid_at' => ($step3['final_price'] == 0 && $step3['points_to_redeem'] > 0) ? now() : null,
             ]);
         }
@@ -201,7 +199,7 @@ class BookingController extends Controller
                 'user_id' => auth()->id(),
                 'booking_id' => $booking->id,
                 'amount' => $step3['points_to_earn_for_booking'],
-                'type' => 'earned', // Zorg dat je enum dit toestaat
+                'type' => 'earned',
                 'reason' => 'Punten voor boeking: ' . $booking->festival->name,
             ]);
         }
@@ -211,7 +209,7 @@ class BookingController extends Controller
                 'user_id' => auth()->id(),
                 'booking_id' => $booking->id,
                 'amount' => -$step3['points_to_redeem'], // Negatief bedrag voor ingewisseld
-                'type' => 'redeemed', // Zorg dat je enum dit toestaat ('ingewisseld')
+                'type' => 'redeemed',
                 'reason' => 'Punten ingewisseld voor korting op boeking: ' . $booking->festival->name,
             ]);
         }

@@ -15,26 +15,26 @@ class BusSeeder extends Seeder
     {
         Bus::create([
             'type' => 'Standaard Touringcar',
-            'capaciteit' => 50,
+            'capacity' => 50,
             'license_plate' => 'BS-001-NL',
-            'chauffeur' => 'Jan de Vries',
-            'beschikbaar' => true,
+            'driver' => 'Jan de Vries',
+            'available' => true,
         ]);
 
         Bus::create([
             'type' => 'Standaard Touringcar',
-            'capaciteit' => 50,
+            'capacity' => 50,
             'license_plate' => 'BS-002-NL',
-            'chauffeur' => 'Piet Jansen',
-            'beschikbaar' => true,
+            'driver' => 'Piet Jansen',
+            'available' => true,
         ]);
 
         Bus::create([
             'type' => 'Dubbeldekker',
-            'capaciteit' => 80,
+            'capacity' => 80,
             'license_plate' => 'DD-001-NL',
-            'chauffeur' => 'Klaas de Groot',
-            'beschikbaar' => true,
+            'driver' => 'Klaas de Groot',
+            'available' => true,
         ]);
     }
 }

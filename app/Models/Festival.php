@@ -25,6 +25,11 @@ class Festival extends Model
         'status',
         'planning_status',
     ];
+
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
     public function bookings() {
         return $this->hasMany(Booking::class);
     }

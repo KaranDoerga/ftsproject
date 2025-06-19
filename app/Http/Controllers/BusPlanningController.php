@@ -15,7 +15,6 @@ class BusPlanningController extends Controller
         $flaggedFestivals = Festival::where('planning_status', 'requires_attention')->get();
 
         // Bereken per festival het aantal geboekte personen.
-        // Dit kan later geoptimaliseerd worden, maar is voor nu duidelijk.
         $flaggedFestivals->each(function ($festival) {
             $festival->totalPersonsBooked = $festival->bookings()->sum('person_amount');
         });
@@ -33,7 +32,6 @@ class BusPlanningController extends Controller
     public function approve(Festival $festival)
     {
         // Stap 1: Markeer alle routes van dit festival als 'available'
-        // We gebruiken de relatie die je al hebt gedefinieerd in het Festival model.
         $festival->routes()->update(['available' => true]);
 
         // Stap 2: Update de planning status van het festival zelf naar 'planned'

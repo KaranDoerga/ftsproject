@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,48 +15,32 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        User::create([
-            'first_name' => 'Test',
-            'last_name' => 'Gebruiker',
-            'email' => 'test@example.com',
-            'password' => Hash::make('password'),
-            'adress' => 'Straat 1',
-            'postal_code' => '1234 AB',
-            'city' => 'Zwolle',
-            'role' => 'customer',
-        ]);
+        // 1. Maak de publieke storage mappen leeg en opnieuw aan voor een schone start
+        Storage::disk('public')->deleteDirectory('festivals');
+        Storage::disk('public')->makeDirectory('festivals');
 
-        User::create([
-            'first_name' => 'Petra',
-            'last_name' => 'Planner',
-            'email' => 'planner@example.com',
-            'password' => Hash::make('password'),
-            'adress' => 'Planstraat 1',
-            'postal_code' => '1234 PL',
-            'city' => 'Den Haag',
-            'role' => 'planner', // Belangrijk!
-            'email_verified_at' => now(),
-        ]);
-
-        User::create([
-            'first_name' => 'Adam',
-            'last_name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
-            'adress' => 'Beheerweg 1',
-            'postal_code' => '1234 AD',
-            'city' => 'Utrecht',
-            'role' => 'admin', // Belangrijk!
-            'email_verified_at' => now(),
-        ]);
-
+        // 2. Roep al je bestaande seeders aan
         $this->call([
+            UserSeeder::class,
+            BusSeeder::class,
             FestivalSeeder::class,
             RouteSeeder::class,
             BookingSeeder::class,
-            BusSeeder::class,
         ]);
+
+        // 3. Kopieer de seeder-afbeeldingen naar de publieke storage
+        $this->command->info('Afbeeldingen voor seeders kopiëren...');
+
+        $sourceDir = database_path('seed-images/festivals');
+        $files = scandir($sourceDir);
+
+        foreach ($files as $file) {
+            if ($file !== '.' && $file !== '..') {
+                copy($sourceDir . '/' . $file, storage_path('app/public/festivals/' . $file));
+            }
+        }
+
+        $this->command->info('Afbeeldingen gekopieerd.');
     }
 }
