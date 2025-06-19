@@ -68,7 +68,12 @@
                             </table>
                         </div>
                     @else
-                        <p class="text-gray-700 dark:text-gray-100">Je hebt geen aankomende reizen gepland.</p>
+                        <div class="text-center py-8">
+                            <p class="text-gray-700 dark:text-gray-200 mb-2">Je hebt nog geen aankomende reizen gepland.</p>
+                            <a href="{{ route('festivals.index') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm py-2 px-4 rounded-lg">
+                                Bekijk de festivals en boek je eerste reis!
+                            </a>
+                        </div>
                     @endif
                     {{-- Hier kun je later een link toevoegen naar een volledige boekingsgeschiedenis --}}
                 </div>

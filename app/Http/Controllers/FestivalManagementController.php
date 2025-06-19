@@ -117,6 +117,18 @@ class FestivalManagementController extends Controller
      */
     public function destroy(Festival $festival)
     {
+
+        // CONTROLE: Heeft dit festival boekingen?
+        if ($festival->bookings()->count() > 0) {
+            return redirect()->route('planner.festivals.index')
+                ->with('error', "Kan festival '{$festival->name}' niet verwijderen, er zijn nog actieve boekingen.");
+        }
+
+        // Verwijder de afbeelding uit de storage
+        if ($festival->image) {
+            Storage::disk('public')->delete($festival->image);
+        }
+
         $festival->delete();
 
         return redirect()->route('planner.festivals.index')->with('success', 'Festival succesvol verwijderd.');
