@@ -42,7 +42,7 @@
                 <hr class="my-6 border-gray-700" />
 
                 <div class="text-center">
-                    <p class="text-sm text-gray-400">© {{ date('Y') }} Festival Travel System. Alle rechten voorbehouden.</p>
+                    <p class="text-sm text-gray-400">© {{ date('Y') }} Karan Doerga. Alle rechten voorbehouden.</p>
                 </div>
             </div>
         </footer>
