@@ -38,18 +38,28 @@
                 </div>
 
                 {{-- Prijs en Boek-knop --}}
-                <div class="bg-gray-700 p-6 rounded-lg shadow-inner">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-inner">
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="text-sm text-gray-400">Prijs per persoon</p>
                             <p class="text-3xl font-bold text-white">€{{ number_format($festival->ticket_price, 2) }}</p>
                         </div>
-                        {{-- Toon de knop alleen als de gebruiker een klant is --}}
-                        @if (Auth::user() && Auth::user()->role == 'customer')
-                            <a href="{{ route('bookings.step1', $festival->id) }}" class="px-10 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-500 transition-colors duration-200">
+
+                        @guest
+                            {{-- Voor niet-ingelogde gebruikers: link naar de inlogpagina --}}
+                            <a href="{{ route('login') }}" class="px-10 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-500 transition-colors duration-200">
                                 Boek nu
                             </a>
-                        @endif
+                        @endguest
+
+                        @auth
+                            {{-- Voor ingelogde gebruikers: toon alleen aan klanten --}}
+                            @if (Auth::user()->role == 'customer')
+                                <a href="{{ route('bookings.step1', $festival->id) }}" class="px-10 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-500 transition-colors duration-200">
+                                    Boek nu
+                                </a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>
