@@ -18,6 +18,16 @@ class Route extends Model
         'available',
     ];
 
+    protected static function booted(): void {
+        static::creating(function(Route $route) {
+            $route->available = !empty($route->bus_id);
+        });
+
+        static::updating(function(Route $route) {
+            $route->available = !empty($route->bus_id);
+        });
+    }
+
     public function festival() {
         return $this->belongsTo(Festival::class);
     }

@@ -13,7 +13,7 @@ class BookingController extends Controller
 {
     public function create(Festival $festival)
     {
-        $routes = Route::where('festival_id', $festival->id)->get();
+        $routes = Route::where('festival_id', $festival->id)->where('available', true)->get();
 
         return view('bookings.step1', [
             'festival' => $festival,

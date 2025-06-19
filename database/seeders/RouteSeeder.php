@@ -35,7 +35,7 @@ class RouteSeeder extends Seeder
                     'date_departure' => $festival->start_date->setTime(8, 00),
                     // Terugkomst op de ochtend na het festival
                     'date_return' => $festival->end_date->addDay()->setTime(10, 00),
-                    'bus_id' => null, // Standaard geen bus toegewezen
+                    'bus_id' => 1,
                     'available' => false, // Standaard niet beschikbaar, wordt pas 'true' na goedkeuring planner
                 ]);
             }
