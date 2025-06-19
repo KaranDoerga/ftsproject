@@ -55,6 +55,7 @@ class DatabaseSeeder extends Seeder
             FestivalSeeder::class,
             RouteSeeder::class,
             BookingSeeder::class,
+            BusSeeder::class,
         ]);
     }
 }
