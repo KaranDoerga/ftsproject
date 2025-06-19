@@ -15,7 +15,7 @@ Volg de onderstaande stappen om het project lokaal op te zetten.
 ### Stappen
 1.  **Clone de repository:**
     ```bash
-    git clone [jouw-git-url]
+    git clone https://github.com/KaranDoerga/ftsproject.git
     cd fts-project
     ```
 
