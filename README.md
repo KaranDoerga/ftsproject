@@ -49,7 +49,7 @@ Volg de onderstaande stappen om het project lokaal op te zetten.
       DB_PORT=3306
       DB_DATABASE=ftsdb
       DB_USERNAME=root
-      DB_PASSWORD=
+      DB_PASSWORD=root
       ```
 
 7.  **Database Opzetten en Vullen (Belangrijkste Stap):**
