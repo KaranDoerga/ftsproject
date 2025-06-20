@@ -4,7 +4,7 @@
         <h1 class="font-semibold text-3xl text-gray-800 dark:text-gray-200 leading-tight mb-6">Festivals</h1>
 
         <form method="GET" action="{{ route('festivals.index') }}">
-            {{-- 🔍 Zoek + Sorteer + Filter Toggle --}}
+            {{--  Zoek + Sorteer + Filter Toggle --}}
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                 <div class="flex flex-1 gap-2">
                     <x-text-input type="text" name="search" value="{{request('search')}}" placeholder="Zoek festivals..." class="border rounded px-3 py-2 w-full"/>
@@ -16,7 +16,7 @@
                 </button>
             </div>
 
-            {{-- 🔽 Inklapbare filters --}}
+            {{--  Inklapbare filters --}}
             <div id="filters" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 hidden">
                 <input type="date" name="start_date" value="{{request('start_date')}}" class="border rounded px-3 py-2" placeholder="Van">
                 <input type="date" name="end_date" value="{{request('end_date')}}" class="border rounded px-3 py-2" placeholder="Tot">
@@ -44,7 +44,7 @@
             </div>
         </form>
 
-        {{-- 🔄 Sorteer dropdown + aantal --}}
+        {{--  Sorteer dropdown + aantal --}}
         <div class="flex justify-between items-center mb-4">
             <div>
                 <label for="sortSelect" class="text-gray-700 dark:text-gray-300 mr-2">Sorteren op:</label>
@@ -54,10 +54,10 @@
                     <option value="name" {{ request('sort') === 'name' ? 'selected' : '' }}>Naam</option>
                 </select>
             </div>
-            <div class="text-gray-600 dark:text-gray-300">{{ $festivals->count() }} festivals gevonden</div>
+            <div class="text-gray-600 dark:text-gray-300">{{ $festivals->total() }} festivals gevonden</div>
         </div>
 
-        {{-- 🎟 Festival cards --}}
+        {{--  Festival cards --}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($festivals as $festival)
                 <div class="border rounded shadow p-4 bg-blue-200">

@@ -33,11 +33,11 @@
                         <div class="space-y-4">
                             <div>
                                 <label class="block font-medium text-sm text-gray-700 dark:text-gray-300">Naam</label>
-                                <input type="text" value="{{ $user->first_name }} {{ $user->last_name }}" disabled class="block mt-1 w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 dark:text-gray-400">
+                                <input type="text" value="{{ $user->first_name }} {{ $user->last_name }}" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 dark:text-gray-400">
                             </div>
                             <div>
                                 <label class="block font-medium text-sm text-gray-700 dark:text-gray-300">E-mailadres</label>
-                                <input type="email" value="{{ $user->email }}" disabled class="block mt-1 w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 dark:text-gray-400">
+                                <input type="email" value="{{ $user->email }}" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-900 dark:text-gray-400">
                             </div>
 
                             <div>

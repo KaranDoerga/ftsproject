@@ -94,7 +94,7 @@ class BookingController extends Controller
         $user = auth()->user();
 
         $originalPrice = $festival->ticket_price * $step1['person_amount'];
-        $pointsToEarn = $step1['person_amount'] * 100;
+        $pointsToEarn = $step1['person_amount'] * $step1['points'];
         $currentPointsBalance = Point::where('user_id', $user->id)->sum('amount');
 
         return view('bookings.step3', compact('festival', 'route', 'step1', 'step2', 'user', 'originalPrice', 'pointsToEarn', 'currentPointsBalance'));
