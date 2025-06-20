@@ -1,6 +1,7 @@
 # Festival Travel System (FTS)
 
-Dit is een Laravel-applicatie voor het beheren en boeken van busreizen naar festivals.
+Dit is mijn Laravel-applicatie voor het beheren en boeken van busreizen naar festivals.
+Alle benodigde informatie zoals de SDD is terug te vinden in de root.
 
 ## Installatie en Setup
 
